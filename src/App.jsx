@@ -13,11 +13,16 @@ function App(props) {
       key={task.id}
     />
   ));
+
+  const addTask = (name) => {
+    alert(name)
+  }
+
   return (
     <>
       <div className="todoapp stack-large">
         <h1>To do? Or not To Do?</h1>
-       <Form />
+       <Form addTask={addTask}/>
         <div className="filters btn-group stack-exception">
           <FilterButton />
         </div>
