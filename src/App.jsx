@@ -1,9 +1,11 @@
 import { useState } from "react";
 import "./App.css";
+import FilterButton from "./components/FilterButtons/FilterButton";
+import Form from "./components/Form/Form";
 import Todo from "./components/Todo/Todo";
 
 function App(props) {
-  const taskList = props.tasks?.map((task) => (
+  const taskList = props.tasks.map((task) => (
     <Todo
       id={task.id}
       name={task.name}
@@ -15,49 +17,16 @@ function App(props) {
     <>
       <div className="todoapp stack-large">
         <h1>To do? Or not To Do?</h1>
-        <form>
-          <h2 className="label-wrapper">
-            <label htmlFor="new-todo-input" className="label__lg">
-              What Should Be Done?
-            </label>
-          </h2>
-          <input
-            type="text"
-            id="new-todo-input"
-            className="input input__lg"
-            name="text"
-            autoComplete="off"
-          />
-          <button type="submit" className="btn btn__primary btn__lg">
-            Add
-          </button>
-        </form>
+       <Form />
         <div className="filters btn-group stack-exception">
-          <button type="button" className="btn toggle-btn" aria-pressed="true">
-            <span className="visually-hidden">Show </span>
-            <span>all</span>
-            <span className="visually-hidden"> tasks</span>
-          </button>
-          <button type="button" className="btn toggle-btn" aria-pressed="false">
-            <span className="visually-hidden">Show </span>
-            <span>Active</span>
-            <span className="visually-hidden"> tasks</span>
-          </button>
-          <button type="button" className="btn toggle-btn" aria-pressed="false">
-            <span className="visually-hidden">Show </span>
-            <span>Completed</span>
-            <span className="visually-hidden"> tasks</span>
-          </button>
+          <FilterButton />
         </div>
-        <h2 id="list-heading">3 tasks remaining</h2>
+        <h2 id="list-heading">{props.tasks.length} tasks remaining</h2>
         <ul
           role="list"
           className="todo-list stack-large stack-exception"
           aria-labelledby="list-heading"
         >
-          {/* <Todo name="eat" completed={true} id='todo-1'/>
-        <Todo name="sleep" completed={false} id='todo-2'/>
-        <Todo name="repeat" completed={false} id='todo-3'/> */}
           {taskList}
         </ul>
       </div>
