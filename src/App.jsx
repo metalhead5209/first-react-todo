@@ -5,6 +5,13 @@ import FilterButton from "./components/FilterButtons/FilterButton";
 import Form from "./components/Form/Form";
 import Todo from "./components/Todo/Todo";
 
+const DATA = [
+  { id: "todo-2", name: "Buy new cat litter", completed: false },
+  { id: "todo-3", name: "Buy new rat food", completed: false },
+  { id: "todo-4", name: "Get better at React", completed: false }
+];
+
+
 const FILTER_MAP  = {
   All: () => true,
   Active: (task) => !task.completed,
@@ -15,7 +22,7 @@ const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 const App = (props) => {
 
-  const [tasks, setTasks] = useState(props.tasks);
+  const [tasks, setTasks] = useState(DATA);
   const [ filter, setFilter ] = useState('All');
 
   const toggleTaskCompleted = (id) => {
